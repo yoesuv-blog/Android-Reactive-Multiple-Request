@@ -32,7 +32,7 @@ class ListPlaceAdapter: RecyclerView.Adapter<ListPlaceAdapter.PlaceViewHolder>()
         this.listPlace.addAll(listData)
     }
 
-    class PlaceViewHolder(val binding: com.yoesuv.multiplerequest.databinding.ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+    class PlaceViewHolder(private val binding: com.yoesuv.multiplerequest.databinding.ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView(placeModel: PlaceModel){
             val viewModel = ItemListViewModel(placeModel)
             binding.itemPlace = viewModel

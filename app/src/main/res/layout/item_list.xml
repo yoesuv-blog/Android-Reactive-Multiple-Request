@@ -16,7 +16,8 @@
                     android:id="@+id/imageViewItemList"
                     android:layout_width="@dimen/image_view_item_list"
                     android:layout_height="@dimen/image_view_item_list"
-                    app:srcCompat="@drawable/placeholder_image"/>
+                    app:srcCompat="@drawable/placeholder_image"
+                    app:loadImage="@{itemPlace.thumbnail}"/>
 
             <LinearLayout
                     android:layout_width="match_parent"
@@ -32,11 +33,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
+                        android:text="@{itemPlace.title}"
                         tools:text="Place Name"/>
 
                 <android.support.v7.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@{itemPlace.location}"
                         tools:text="Lorem Ipsum Dolor Amit"/>
 
             </LinearLayout>
