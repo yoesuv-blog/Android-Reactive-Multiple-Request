@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.yoesuv.multiplerequest.R
 import com.yoesuv.multiplerequest.databinding.ItemGridBinding
 import com.yoesuv.multiplerequest.menu.models.GalleryModel
+import com.yoesuv.multiplerequest.menu.viewmodels.ItemGridViewModel
 
 class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
 
@@ -31,9 +32,10 @@ class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
         this.listGallery.addAll(listData)
     }
 
-    class GalleryViewHolder(val binding: ItemGridBinding) : RecyclerView.ViewHolder(binding.root) {
+    class GalleryViewHolder(private val binding: ItemGridBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView(galleryModel: GalleryModel) {
-
+            val viewModel = ItemGridViewModel(galleryModel)
+            binding.itemGallery = viewModel
         }
     }
 }
