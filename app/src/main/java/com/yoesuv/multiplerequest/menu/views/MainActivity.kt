@@ -51,12 +51,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeLiveData() {
         viewModel.listPlace.observe(this, Observer { place ->
-            Log.d(Constants.TAG_DEBUG,"MainActivity # list place count : ${place?.size}")
+            //Log.d(Constants.TAG_DEBUG,"MainActivity # list place count : ${place?.size}")
             adapterList.addData(place!!)
             adapterList.notifyDataSetChanged()
         })
         viewModel.listGallery.observe(this, Observer { gallery ->
-            Log.d(Constants.TAG_DEBUG,"MainActivity # gallery count : ${gallery?.size}")
+            //Log.d(Constants.TAG_DEBUG,"MainActivity # gallery count : ${gallery?.size}")
             adapterGrid.addData(gallery!!)
             adapterGrid.notifyDataSetChanged()
         })

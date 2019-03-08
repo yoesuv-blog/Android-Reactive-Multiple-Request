@@ -27,17 +27,23 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         isLoading.postValue(true)
         compositeDisposable.add(
             appResponse.getListPlace()
-                .flatMap( object: Function<MutableList<PlaceModel>, ObservableSource<MutableList<GalleryModel>>> {
-                    override fun apply(t: MutableList<PlaceModel>): ObservableSource<MutableList<GalleryModel>> {
-                        Log.d(Constants.TAG_DEBUG,"MainViewModel # list place ${t.size}")
+                .flatMap( object: Function<MutableList<PlaceModel>, ObservableSource<MutableList<PlaceModel>>> {
+                    override fun apply(t: MutableList<PlaceModel>): ObservableSource<MutableList<PlaceModel>> {
+                        Log.d(Constants.TAG_DEBUG,"MainViewModel # list place 1 -> size : ${t.size}")
                         listPlace.postValue(t)
+                        return appResponse.getListPlaceDua()
+                    }
+                }).flatMap( object: Function<MutableList<PlaceModel>, ObservableSource<MutableList<GalleryModel>>> {
+                    override fun apply(t: MutableList<PlaceModel>): ObservableSource<MutableList<GalleryModel>> {
+                        Log.d(Constants.TAG_DEBUG,"MainViewModel # list place 2 -> size : ${t.size}")
+                        //listPlace.postValue(t)
                         return appResponse.getListGallery()
                     }
-                })
+                } )
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe({ response ->
-                    Log.d(Constants.TAG_DEBUG,"MainViewModel # list gallery ${response.size}")
+                    Log.d(Constants.TAG_DEBUG,"MainViewModel # list gallery -> size : ${response.size}")
                     isLoading.postValue(false)
                     listGallery.postValue(response)
                 },{ throwable ->

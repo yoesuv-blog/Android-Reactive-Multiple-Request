@@ -12,6 +12,10 @@ class ApplicationResponse {
         return apiService.getListPlace()
     }
 
+    fun getListPlaceDua(): Observable<MutableList<PlaceModel>> {
+        return apiService.getListPlaceDua()
+    }
+
     fun getListGallery(): Observable<MutableList<GalleryModel>>{
         return apiService.getListGallery()
     }
